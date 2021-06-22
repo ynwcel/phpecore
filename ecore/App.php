@@ -548,7 +548,8 @@ final class App{
         // Backtrack up the script_filename to find the portion matching
         // php_self
         $path    = isset($_SERVER['PHP_SELF']) ? $_SERVER['PHP_SELF'] : '';
-        $file    = isset($_SERVER['SCRIPT_FILENAME']) ? $_SERVER['SCRIPT_FILENAME'] : '';
+        //$file    = isset($_SERVER['SCRIPT_FILENAME']) ? $_SERVER['SCRIPT_FILENAME'] : '';
+        $file    = str_replace('\\','/',isset($_SERVER['SCRIPT_FILENAME']) ? $_SERVER['SCRIPT_FILENAME'] : '');
         $segs    = explode('/', trim($file, '/'));
         $segs    = array_reverse($segs);
         $index   = 0;
